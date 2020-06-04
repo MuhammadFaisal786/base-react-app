@@ -29,7 +29,7 @@ jobs:
     - name: GitHub action for yarn
       uses: Borales/actions-yarn@v2.1.0
       with: |
-      # Yarn command
+     # Yarn command
       id: install # npm install/ yarn install
       
     - name: creating build
@@ -39,5 +39,5 @@ jobs:
       run: npm install -g surge   
         
     - name: deploying on surge
-      run: surge ./build http:// mighty-faucet.surge.sh/ --token ${{secrets.SURGE_TOKEN}}     
+      run: surge ./build http:// equable-fiction.surge.sh/ --token ${{secrets.SURGE_TOKEN}}     
      
