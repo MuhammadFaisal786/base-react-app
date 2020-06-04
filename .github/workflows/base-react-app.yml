@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: base-react-app
+name: CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -20,17 +20,18 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - name: Installing Node
-      uses: actions/setup-node@v2-beta
+    - name: Setup Node.js environment
+      uses: actions/setup-node@1.4.2
       with:
-       node-version: 12 
+        version: 12 
+       
           
 
-    - name: GitHub action for yarn
+    - name: GitHub action for Yarn
       uses: Borales/actions-yarn@v2.1.0
-      with: |
-     # Yarn command
-      id: install # npm install/ yarn install
+      with: 
+      # Yarn command
+      cmd: install # npm install/ yarn install
       
     - name: creating build
       run: yarn build
@@ -39,5 +40,5 @@ jobs:
       run: npm install -g surge   
         
     - name: deploying on surge
-      run: surge ./build http:// equable-fiction.surge.sh/ --token ${{secrets.SURGE_TOKEN}}     
+      run: surge ./build https://equable-fiction.surge.sh/ --token ${{secrets.SURGE_TOKEN}}     
      
